@@ -8,20 +8,20 @@ import json
 spark = SparkSession.builder.appName("SupplierMySQLToLanding").getOrCreate()
 
 # Google Cloud Storage (GCS) Configuration
-GCS_BUCKET = "datalake-project-bkt-19032025"
+GCS_BUCKET = "myreatilbkt"
 LANDING_PATH = f"gs://{GCS_BUCKET}/landing/supplier-db/"
 ARCHIVE_PATH = f"gs://{GCS_BUCKET}/landing/supplier-db/archive/"
 CONFIG_FILE_PATH = f"gs://{GCS_BUCKET}/configs/supplier_config.csv"
 
 # BigQuery Configuration
-BQ_PROJECT = "avd-databricks-demo"
+BQ_PROJECT = "gcp-retailerproj-23032025"
 BQ_AUDIT_TABLE = f"{BQ_PROJECT}.temp_dataset.audit_log"
 BQ_LOG_TABLE = f"{BQ_PROJECT}.temp_dataset.pipeline_logs"
 BQ_TEMP_PATH = f"{GCS_BUCKET}/temp/"  
 
 # MySQL Configuration
 MYSQL_CONFIG = {
-    "url": "jdbc:mysql://34.134.165.135:3306/supplierDB?useSSL=false&allowPublicKeyRetrieval=true",
+    "url": "jdbc:mysql://34.66.86.237:3306/supplierDB?useSSL=false&allowPublicKeyRetrieval=true",
     "driver": "com.mysql.cj.jdbc.Driver",
     "user": "myuser",
     "password": "mypass"

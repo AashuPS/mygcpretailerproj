@@ -1,4 +1,4 @@
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.orders`(
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.orders`(
     order_id INT64,
     customer_id INT64,
     order_date STRING,
@@ -7,10 +7,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.orders`(
 )
 OPTIONS (
   format = 'JSON',
-  uris = ['gs://datalake-project-bkt-19032025/landing/retailer-db/orders/*.json']
+  uris = ['gs://myreatilbkt/landing/retailer-db/orders/*.json']
 );
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.customers`
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.customers`
 (
     customer_id INT64,
     name STRING,
@@ -19,10 +19,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.customer
 )
 OPTIONS (
     format = 'JSON',
-    uris = ['gs://datalake-project-bkt-19032025/landing/retailer-db/customers/*.json']
+    uris = ['gs://myreatilbkt/landing/retailer-db/customers/*.json']
 );
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.products`
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.products`
 (
     product_id INT64,
     name STRING,
@@ -32,10 +32,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.products
 )
 OPTIONS (
     format = 'JSON',
-    uris = ['gs://datalake-project-bkt-19032025/landing/retailer-db/products/*.json']
+    uris = ['gs://myreatilbkt/landing/retailer-db/products/*.json']
 );
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.categories`
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.categories`
 (
     category_id INT64,
     name STRING,
@@ -43,10 +43,10 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.categori
 )
 OPTIONS (
     format = 'JSON',
-    uris = ['gs://datalake-project-bkt-19032025/landing/retailer-db/categories/*.json']
+    uris = ['gs://myreatilbkt/landing/retailer-db/categories/*.json']
 );
 
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.order_items`
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.order_items`
 (
     order_item_id INT64,
     order_id INT64,
@@ -57,11 +57,11 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.order_it
 )
 OPTIONS (
     format = 'JSON',
-    uris = ['gs://datalake-project-bkt-19032025/landing/retailer-db/order_items/*.json']
+    uris = ['gs://myreatilbkt/landing/retailer-db/order_items/*.json']
 );
 -------------------------------------------------------------------------------------------------------------
 -- Suppliers Table
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.suppliers` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.suppliers` (
     supplier_id INT64,
     supplier_name STRING,
     contact_name STRING,
@@ -74,11 +74,11 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.supplier
 )
 OPTIONS (
   format = 'JSON',
-  uris = ['gs://datalake-project-bkt-19032025/landing/supplier-db/suppliers/*.json']
+  uris = ['gs://myreatilbkt/landing/supplier-db/suppliers/*.json']
 );
 
 -- Product Suppliers Table (Mapping suppliers to products)
-CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.product_suppliers` (
+CREATE EXTERNAL TABLE IF NOT EXISTS `gcp-retailerproj-23032025.bronze_dataset.product_suppliers` (
     supplier_id INT64,
     product_id INT64,
     supply_price FLOAT64,
@@ -86,12 +86,12 @@ CREATE EXTERNAL TABLE IF NOT EXISTS `avd-databricks-demo.bronze_dataset.product_
 )
 OPTIONS (
   format = 'JSON',
-  uris = ['gs://datalake-project-bkt-19032025/landing/supplier-db/product_suppliers/*.json']
+  uris = ['gs://myreatilbkt/landing/supplier-db/product_suppliers/*.json']
 );
 
 -------------------------------------------------------------------------------------------------------------
 
-CREATE OR REPLACE EXTERNAL TABLE `avd-databricks-demo.bronze_dataset.customer_reviews` (
+CREATE OR REPLACE EXTERNAL TABLE `gcp-retailerproj-23032025.bronze_dataset.customer_reviews` (
   id STRING,
   customer_id INT64,
   product_id INT64,
@@ -101,7 +101,8 @@ CREATE OR REPLACE EXTERNAL TABLE `avd-databricks-demo.bronze_dataset.customer_re
 )
 OPTIONS (
   format = 'PARQUET',
-  uris = ['gs://datalake-project-bkt-19032025/landing/customer_reviews/customer_reviews_*.parquet']
+  uris = ['gs://myreatilbkt/landing/customer_reviews/customer_reviews_*.parquet']
 );
+
 
 -------------------------------------------------------------------------------------------------------------
